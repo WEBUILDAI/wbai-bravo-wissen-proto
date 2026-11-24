@@ -1,0 +1,18 @@
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.6.9
+    hooks:
+      - id: ruff
+        args: [--fix]
+  - repo: https://github.com/psf/black
+    rev: 24.10.0
+    hooks:
+      - id: black
+  - repo: local
+    hooks:
+      - id: validate-eintraege
+        name: Einträge gegen Schema prüfen
+        entry: python scripts/validate.py
+        language: system
+        pass_filenames: false
+        files: ^(eintraege/|schema/|scripts/validate\.py)

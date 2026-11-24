@@ -1,0 +1,8 @@
+# Laufzeit und Entwicklung (kleines Repo, eine Datei). Pinnen mit: make compile
+jsonschema>=4.21
+pyyaml>=6.0
+pytest>=8.0
+ruff>=0.6
+black>=24.0
+pre-commit>=3.7
+pip-tools>=7.4
