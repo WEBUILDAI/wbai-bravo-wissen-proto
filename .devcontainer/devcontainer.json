@@ -1,0 +1,10 @@
+{
+  "name": "wbai-bravo-wissen-proto",
+  "image": "mcr.microsoft.com/devcontainers/python:1-3.11-bookworm",
+  "postCreateCommand": "make install && pre-commit install",
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-python.python", "charliermarsh.ruff", "ms-python.black-formatter"]
+    }
+  }
+}
