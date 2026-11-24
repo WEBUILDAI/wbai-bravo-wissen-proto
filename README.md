@@ -38,4 +38,12 @@ gueltig_bis: "2027-06-30"
 | `make abgelaufen` | Einträge mit `gueltig_bis` in der Vergangenheit |
 | `make compile` | Abhängigkeiten neu pinnen |
 
+## Wissenspflege (automatisch)
+
+`.github/workflows/bravo-wissen-pflege.yml` läuft montags (und manuell per *Run workflow*):
+findet Einträge mit `gueltig_bis` in der Vergangenheit, lässt Claude (WIF, ohne API-Key, ohne freie
+Shell) Aktualisierungen vorschlagen und öffnet einen PR auf `claude/wissen-pflege-<run_id>`.
+Voraussetzungen: Repo-Variablen `ANTHROPIC_FEDERATION_RULE_ID`, `ANTHROPIC_ORGANIZATION_ID`
+(siehe `docs/ASSUMPTIONS.md`, A-W18 bis A-W20).
+
 Stand und Auftrag: `docs/HANDOFF.md`. Annahmen: `docs/ASSUMPTIONS.md`.
