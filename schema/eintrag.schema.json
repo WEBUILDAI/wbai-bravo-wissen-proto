@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/WEBUILDAI/wbai-bravo-wissen-proto/schema/eintrag.schema.json",
+  "title": "Wissenseintrag (Frontmatter)",
+  "description": "Frontmatter eines Eintrags unter eintraege/<typ>/<slug>.md. Die ID eines Eintrags ist '<typ>/<slug>' (aus dem Pfad abgeleitet). kunde und projekt sind nur Metadaten und werden nie an Agents ausgegeben.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["typ", "titel", "beschreibung", "tech", "tags", "kunde", "projekt", "quelle", "gueltig_bis"],
+  "properties": {
+    "typ": {
+      "type": "string",
+      "enum": ["entscheidung", "learning", "muster", "gotcha", "standard"],
+      "description": "Art des Wissens. Muss dem Ordnernamen unter eintraege/ entsprechen."
+    },
+    "titel": { "type": "string", "minLength": 5, "maxLength": 120 },
+    "beschreibung": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 300,
+      "description": "Ein Satz: wann ist der Eintrag relevant. Wird für das Ranking genutzt."
+    },
+    "tech": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z0-9][a-z0-9.+-]*$" },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+      "uniqueItems": true
+    },
+    "kunde": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "description": "Nur Metadatum. Im Prototyp ausschließlich 'wbai' (Repo ist öffentlich)."
+    },
+    "projekt": { "type": "string", "pattern": "^[a-z0-9-]+$", "description": "Nur Metadatum." },
+    "quelle": { "type": "string", "format": "uri", "pattern": "^https://" },
+    "gueltig_bis": { "type": "string", "format": "date" }
+  }
+}
